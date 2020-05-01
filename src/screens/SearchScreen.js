@@ -8,7 +8,6 @@ import ResultsList from '../components/ResultsList'
 const SearchScreen = () => {
     const [term, setTerm] = useState('');
     const [searchApi, results, error] = useResults();
-    console.log(results)
 
 
     const filterResultsByPrice = (price) => {
@@ -25,11 +24,10 @@ const SearchScreen = () => {
             onTermSubmit={() => searchApi(term)}
             />
             {error ? <Text>{error}</Text> : null}
-            <Text>We found {results.length}</Text>
             <ScrollView>
-            <ResultsList results={filterResultsByPrice('$')} title="Cost Effective"/>
-            <ResultsList results={filterResultsByPrice('$$')} title="Bit Pricier"/>
-            <ResultsList results={filterResultsByPrice('$$$')} title="Big Spender"/>
+                <ResultsList results={filterResultsByPrice('$')} title="Cost Effective"/>
+                <ResultsList results={filterResultsByPrice('$$')} title="Bit Pricier"/>
+                <ResultsList results={filterResultsByPrice('$$$')} title="Big Spender"/>
             </ScrollView>
         </View>
     )
